@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.hanks:htextview-base-0.1.6">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/htextview-base-0.1.6.aar/336d5c8a4fe171ffc2e904ece455d6c4/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/htextview-base-0.1.6.aar/336d5c8a4fe171ffc2e904ece455d6c4/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/htextview-base-0.1.6.aar/4b5b16f8a8f237c3dda66bcbc814d8ac/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/htextview-base-0.1.6.aar/4b5b16f8a8f237c3dda66bcbc814d8ac/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

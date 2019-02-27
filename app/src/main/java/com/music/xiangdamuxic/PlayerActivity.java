@@ -70,7 +70,6 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
                 seekBar.setProgress(currentPosition);
                 mLyricView.setCurrentTimeMillis(currentPosition);
                 if (duration - 2000 <= currentPosition) {
-                    System.out.println("11111111");
                     mb.next();
                 }
 

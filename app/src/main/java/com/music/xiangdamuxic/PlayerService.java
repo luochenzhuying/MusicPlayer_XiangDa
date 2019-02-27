@@ -132,19 +132,19 @@ public class PlayerService extends Service {
 
     public void next() {
         try {
-        int mode = Utils.getInt(this, Constant.MODE, 0);
-        switch (mode){
-            case 0:
-                playNumSong((++playingNum) % listOfSong.size());
-                break;
-            case 1:
-                playNumSong(playingNum);
-                break;
-            case 2:
-                int x = (int) (Math.random() * (listOfSong.size() - 1));
-                playNumSong(x);
-                break;
-        }
+            int mode = Utils.getInt(this, Constant.MODE, 0);
+            switch (mode) {
+                case 0:
+                    playNumSong((++playingNum) % listOfSong.size());
+                    break;
+                case 1:
+                    playNumSong(playingNum);
+                    break;
+                case 2:
+                    int x = (int) (Math.random() * (listOfSong.size() - 1));
+                    playNumSong(x);
+                    break;
+            }
 
         } catch (IOException e) {
         }
@@ -172,9 +172,9 @@ public class PlayerService extends Service {
     public void pre() {
         try {
             int mode = Utils.getInt(this, Constant.MODE, 0);
-            switch (mode){
+            switch (mode) {
                 case 0:
-                    playNumSong((--playingNum+listOfSong.size()) % listOfSong.size());
+                    playNumSong((--playingNum + listOfSong.size()) % listOfSong.size());
                     break;
                 case 1:
                     playNumSong(playingNum);
