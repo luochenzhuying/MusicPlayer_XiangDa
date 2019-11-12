@@ -16,6 +16,7 @@ import java.util.TimerTask;
 
 public class WelcomePage extends AppCompatActivity {
 
+    //记录问候语播放的位置
     int index = 0;
 
     @Override
@@ -30,10 +31,10 @@ public class WelcomePage extends AppCompatActivity {
         final long startTime = date.getTime();
 
         //1.0 不透明，0.0完全透明
-        //设置渐变动画
+        //配置渐变动画
         AlphaAnimation ac = new AlphaAnimation(0.0f, 1.0f);
         ac.setDuration(3000);
-        //设置渐变动画
+        //给整个Welcome界面设置渐变动画
         findViewById(R.id.wlecomePage_relativeLayout).startAnimation(ac);
 
         //设置动态字段
@@ -41,7 +42,8 @@ public class WelcomePage extends AppCompatActivity {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                scaleTextView.animateText(Constant.SENTENCES[(index++) % Constant.SENTENCES.length]);
+                //定时变换字，字体存于Constant常量池中
+                scaleTextView.animateText(Constant.GREETINGSENTENCES[(index++) % Constant.GREETINGSENTENCES.length]);
             }
         };
 

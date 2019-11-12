@@ -29,6 +29,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
     //圆形ImageView   WelcomePage
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     //动态TextView基础  WelcomePage
@@ -60,4 +61,5 @@ dependencies {
     //MD dialog
     implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
     implementation project(':verticaladvertisementlibrary')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
 }

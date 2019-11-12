@@ -164,7 +164,7 @@ public class MainFragment extends Fragment {
         TimerTask textTimerTask = new TimerTask() {
             @Override
             public void run() {
-                cvaporateTextView.animateText(Constant.SENTENCES[(index++) % Constant.SENTENCES.length]);
+                cvaporateTextView.animateText(Constant.GREETINGSENTENCES[(index++) % Constant.GREETINGSENTENCES.length]);
             }
         };
 

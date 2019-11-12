@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 
+import com.jaeger.library.StatusBarUtil;
 import com.music.xiangdamuxic.fragment.MainFragment;
 import com.music.xiangdamuxic.fragment.MessageFragment;
 import com.music.xiangdamuxic.fragment.MineFragment;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //状态栏透明化
-//        StatusBarUtil.setTransparent(this);
+        StatusBarUtil.setTransparent(this);
 
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(new MainFragment());
