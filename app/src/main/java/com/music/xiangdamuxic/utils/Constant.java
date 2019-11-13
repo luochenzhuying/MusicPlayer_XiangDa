@@ -37,8 +37,8 @@ public class Constant {
     //模式
     public static String MODE = "MODE";
 
-    //主页面个数
-    public static int HOMEPAGENUM = 3;
+    //主页面预加载fragment的个数
+    public static int MAINFRAGMENTPAGENUM = 3;
 
     //备忘录
     public static String MEMORANDUM = "MEMORANDUM";

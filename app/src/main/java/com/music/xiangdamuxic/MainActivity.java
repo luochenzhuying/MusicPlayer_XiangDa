@@ -21,8 +21,11 @@ import eu.long1.spacetablayout.SpaceTabLayout;
 
 
 public class MainActivity extends AppCompatActivity {
+    //记录当前返回键按下时间撮
     private long mPressedTime = 0;
-    private SpaceTabLayout tabLayout;
+
+    //底部TabLayout控件
+    private SpaceTabLayout mBottomTabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,33 +34,47 @@ public class MainActivity extends AppCompatActivity {
         //状态栏透明化
         StatusBarUtil.setTransparent(this);
 
+        //用于存储主页面的3个Fragment
         List<Fragment> fragmentList = new ArrayList<>();
+        //歌曲播放主界面
         fragmentList.add(new MainFragment());
+        //消息界面
         fragmentList.add(new MessageFragment());
+        //个人中心界面
         fragmentList.add(new MineFragment());
-        ViewPager viewPager = findViewById(R.id.Main_viewPager);
-        viewPager.setOffscreenPageLimit(Constant.HOMEPAGENUM);
-        tabLayout = findViewById(R.id.spaceTabLayout);
 
-        //we need the savedInstanceState to get the position
-        tabLayout.initialize(viewPager, getSupportFragmentManager(),
+
+        ViewPager viewPager = findViewById(R.id.Main_viewPager);
+        //设置viewPager预加载fragment的数量（数量存储于常量池中）
+        viewPager.setOffscreenPageLimit(Constant.MAINFRAGMENTPAGENUM);
+
+        //获取底部TabLayout
+        mBottomTabLayout = findViewById(R.id.mainActivity_bottomSliderTabLayout);
+
+        //初始化底部TabLayout
+        mBottomTabLayout.initialize(viewPager, getSupportFragmentManager(),
                 fragmentList, savedInstanceState);
     }
 
 
     @Override
+    //底部TabLayout数据恢复
     protected void onSaveInstanceState(Bundle outState) {
-        tabLayout.saveState(outState);
+        mBottomTabLayout.saveState(outState);
         super.onSaveInstanceState(outState);
     }
 
     @Override
     public void onBackPressed() {
-        long mNowTime = System.currentTimeMillis();//获取第一次按键时间
-        if ((mNowTime - mPressedTime) > 2000) {//比较两次按键时间差
+        //获取第一次按键时间
+        long mNowTime = System.currentTimeMillis();
+
+        //比较两次按键时间差
+        if ((mNowTime - mPressedTime) > 2000) {
             Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_LONG).show();
             mPressedTime = mNowTime;
-        } else {//退出程序
+        } else {
+            //退出程序（清除所有的活动）
             ActivityManager.getInstance().exit();
         }
     }
