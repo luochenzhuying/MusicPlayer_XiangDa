@@ -27,7 +27,14 @@ import java.util.TimerTask;
 
 
 public class MainFragment extends Fragment {
+    /**
+     * 整体fragment控件，用于获取内部控件
+     */
     private View layout;
+
+    /**
+     * 作为本页面的上下文
+     */
     private Activity activity;
 
     int index = 0;
@@ -39,15 +46,19 @@ public class MainFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //获取整体fragment控件
         layout = View.inflate(getActivity().getApplicationContext(), R.layout.fragment_main, null);
+
+        //获取activity,方便后续使用
         activity = getActivity();
+
+        //将页面返回
         return layout;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
 
         //初始化动态字体
         initDynamicText();
@@ -158,6 +169,9 @@ public class MainFragment extends Fragment {
         timer.schedule(task, Constant.DELAY_TIME, Constant.DELAY_TIME);
     }
 
+    /**
+     * 初始化动态字体
+     */
     private void initDynamicText() {
         //设置变化字体
         final EvaporateTextView cvaporateTextView = layout.findViewById(R.id.mainActivity_evaporateTextView);
