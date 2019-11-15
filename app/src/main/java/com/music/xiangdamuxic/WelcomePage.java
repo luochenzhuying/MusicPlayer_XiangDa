@@ -30,15 +30,69 @@ public class WelcomePage extends AppCompatActivity {
         Date date = new Date();
         final long startTime = date.getTime();
 
-        //1.0 不透明，0.0完全透明
-        //配置渐变动画
-        AlphaAnimation ac = new AlphaAnimation(0.0f, 1.0f);
-        ac.setDuration(3000);
-        //给整个Welcome界面设置渐变动画
-        findViewById(R.id.wlecomePage_relativeLayout).startAnimation(ac);
+        //配置页面渐变动画
+        initAnimation();
 
         //设置动态字段
+        initScaleTextView();
+
+        //获取结束时间
+        final long endTime = date.getTime();
+
+        //进行时间计算，证页面的展示时间一定
+        calculateShowTime(startTime, endTime);
+
+
+    }
+
+    /**
+     * 保证页面的展示时间一定（5S），
+     * 使用了sleep，得在子线程进行操作，防止主线程页面卡顿。
+     * 时间计算为进入此函数之前的时间戳减去页面进入的时间戳，再用5减去之前计算的差，为子线程睡眠时间。
+     * 苏醒后跳转新页面，
+     * 再延迟3S销毁该activity。
+     *
+     * @param startTime 刚进入页面的时间戳
+     * @param endTime   进入此函数之前的时间戳
+     */
+    private void calculateShowTime(final long startTime, final long endTime) {
+
+        //开启子线程
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    //子线程休眠未满5s的时间
+                    Thread.sleep((5000) - (endTime - startTime));
+
+                    //MainActivity  意图初始
+                    Intent intent = new Intent(WelcomePage.this, MainActivity.class);
+
+                    //开启意图
+                    startActivity(intent);
+
+                    //跳转动画（向左滑动效果）
+                    overridePendingTransition(R.anim.next_in, R.anim.next_out);
+
+                    //延迟销毁WelcomePage
+                    Thread.sleep(3000);
+                    WelcomePage.this.finish();
+
+                } catch (InterruptedException e) {
+                }
+            }
+        }).start();
+    }
+
+    /**
+     * 初始化动态字段
+     * 1.5S更换一次
+     */
+    private void initScaleTextView() {
+        //获取动态字体控件
         final ScaleTextView scaleTextView = findViewById(R.id.wlecomePage_scaleTextView);
+
+        //设置任务内容
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
@@ -50,29 +104,23 @@ public class WelcomePage extends AppCompatActivity {
         //开启任务，1.5S更换
         Timer timer = new Timer();
         timer.schedule(timerTask, 0, 1500);
+    }
 
-        //获取结束时间
-        final long endTime = date.getTime();
+    /**
+     * 配置页面渐变动画
+     * 由完全透明至完全不透明，渐变时间为3S
+     */
+    private void initAnimation() {
+        //1.0 不透明，0.0完全透明
 
-        //进行时间计算
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep((5000) - (endTime - startTime));
-                    Intent intent = new Intent(WelcomePage.this, MainActivity.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.next_in, R.anim.next_out);
+        //配置渐变动画
+        AlphaAnimation ac = new AlphaAnimation(0.0f, 1.0f);
 
-                    //延迟销毁WelcomePage
-                    Thread.sleep(3000);
-                    WelcomePage.this.finish();
-                } catch (InterruptedException e) {
-                }
-            }
-        }).start();
+        //设置动画时间
+        ac.setDuration(3000);
 
-
+        //给整个Welcome界面设置渐变动画
+        findViewById(R.id.wlecomePage_relativeLayout).startAnimation(ac);
     }
 
 }

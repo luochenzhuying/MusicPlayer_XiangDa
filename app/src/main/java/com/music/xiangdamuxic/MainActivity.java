@@ -21,10 +21,17 @@ import eu.long1.spacetablayout.SpaceTabLayout;
 
 
 public class MainActivity extends AppCompatActivity {
-    //记录当前返回键按下时间撮
+    /**
+     * 记录当前返回键按下的时间撮
+     * 默认为0，保证第一次按下后能对当前时间进行记录
+     */
     private long mPressedTime = 0;
 
-    //底部TabLayout控件
+
+    /**
+     * 底部TabLayout控件
+     * 可以存储fragment，默认为3个
+     */
     private SpaceTabLayout mBottomTabLayout;
 
     @Override
@@ -34,17 +41,12 @@ public class MainActivity extends AppCompatActivity {
         //状态栏透明化
         StatusBarUtil.setTransparent(this);
 
-        //用于存储主页面的3个Fragment
-        List<Fragment> fragmentList = new ArrayList<>();
-        //歌曲播放主界面
-        fragmentList.add(new MainFragment());
-        //消息界面
-        fragmentList.add(new MessageFragment());
-        //个人中心界面
-        fragmentList.add(new MineFragment());
+        //获取fragment列表，包含所以fragment
+        List<Fragment> fragmentList = getFragmentList();
 
-
+        //获取viewPager控件
         ViewPager viewPager = findViewById(R.id.Main_viewPager);
+
         //设置viewPager预加载fragment的数量（数量存储于常量池中）
         viewPager.setOffscreenPageLimit(Constant.MAINFRAGMENTPAGENUM);
 
@@ -57,13 +59,49 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * 获取所有fragment
+     * 包含MainFragment（歌曲播放主界面），MessageFragment（消息界面），MineFragment（个人中心界面）
+     *
+     * @return 全体fragment List
+     */
+    private List<Fragment> getFragmentList() {
+        //用于存储主页面的3个Fragment
+        List<Fragment> fragmentList = new ArrayList<>();
+
+        //歌曲播放主界面
+        fragmentList.add(new MainFragment());
+
+        //消息界面
+        fragmentList.add(new MessageFragment());
+
+        //个人中心界面
+        fragmentList.add(new MineFragment());
+
+
+        return fragmentList;
+    }
+
+
+    /**
+     * 页面意外关闭数据恢复
+     * 主要对底部TabLayout进行恢复
+     *
+     * @param outState 保存的数据，用于还原页面
+     */
     @Override
-    //底部TabLayout数据恢复
     protected void onSaveInstanceState(Bundle outState) {
+        //数据还原
         mBottomTabLayout.saveState(outState);
         super.onSaveInstanceState(outState);
     }
 
+    /**
+     * 返回键处理
+     * 主要实现了再按一次退出程序的功能
+     * 记录连续两次的时间戳，如果小于2S，进行退出。
+     * 注意：此退出清理完所以活动。
+     */
     @Override
     public void onBackPressed() {
         //获取第一次按键时间
@@ -72,8 +110,11 @@ public class MainActivity extends AppCompatActivity {
         //比较两次按键时间差
         if ((mNowTime - mPressedTime) > 2000) {
             Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_LONG).show();
+
+            //记录当前时间戳，为下次计算做准备
             mPressedTime = mNowTime;
         } else {
+
             //退出程序（清除所有的活动）
             ActivityManager.getInstance().exit();
         }
