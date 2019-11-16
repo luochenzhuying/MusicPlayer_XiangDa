@@ -16,7 +16,9 @@ import java.util.TimerTask;
 
 public class WelcomePage extends AppCompatActivity {
 
-    //记录问候语播放的位置
+    /**
+     * 记录问候语播放的位置
+     */
     int index = 0;
 
     @Override

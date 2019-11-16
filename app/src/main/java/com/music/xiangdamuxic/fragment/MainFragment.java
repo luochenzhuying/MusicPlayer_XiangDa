@@ -37,9 +37,12 @@ public class MainFragment extends Fragment {
      */
     private Activity activity;
 
+    /**
+     * 记录问候语播放的位置
+     */
     int index = 0;
 
-    private List<Object> imgList;
+
 
     Timer textTimer = null;
 
@@ -63,7 +66,7 @@ public class MainFragment extends Fragment {
         //初始化动态字体
         initDynamicText();
 
-        //初始化ViewPage
+        //初始化ViewPage（动态滚动栏）
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -76,6 +79,10 @@ public class MainFragment extends Fragment {
 //        ActivityManager.getInstance().addActivity(this);
     }
 
+    /**
+     * 初始化各类button控件
+     * 包括本地音乐、我的下载、最近播放
+     */
     private void initButton() {
         //本地音乐
         layout.findViewById(R.id.item_activity_main_entryPlayActivityButton).setOnClickListener(new View.OnClickListener() {
@@ -101,52 +108,74 @@ public class MainFragment extends Fragment {
             }
         });
 
-
+        //最近播放
+        layout.findViewById(R.id.item_activity_main_recentPlayButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, MusicListActivity.class);
+                startActivity(intent);
+                //关闭定时字体任务，不然会空指针异常
+                textTimer.cancel();
+                activity.overridePendingTransition(R.anim.next_in, R.anim.next_out);
+            }
+        });
     }
 
+    /**
+     *  初始化ViewPage（动态滚动栏）
+     *  使用的是网络图片链接
+     */
     private void InitViewPage() {
         ImageLoadFactory.getInstance().setImageClient(new GlideImageClient());
 
+        //添加网络图片链接
+        final List<Object> imgList;
         imgList = new ArrayList<>();
         imgList.add(Constant.IMAGE_URL_1);
         imgList.add(Constant.IMAGE_URL_2);
         imgList.add(Constant.IMAGE_URL_3);
         imgList.add(Constant.IMAGE_URL_4);
 
-        int mWidth = activity.getWindowManager().getDefaultDisplay().getWidth();
-        float heightRatio = 0.565f;  //高是宽的 0.565 ,根据图片比例
-
+        //将图片资源链接List加入Adapter中
         CardPagerAdapter cardAdapter = new CardPagerAdapter(activity);
         cardAdapter.addImgUrlList(imgList);
 
 
+        //设置阴影大小
         //设置阴影大小，即vPage  左右两个图片相距边框  maxFactor + 0.3*CornerRadius   *2
         //设置阴影大小，即vPage 上下图片相距边框  maxFactor*1.5f + 0.3*CornerRadius
+        int mWidth = activity.getWindowManager().getDefaultDisplay().getWidth();
+        float heightRatio = 0.565f;  //高是宽的 0.565 ,根据图片比例
         int maxFactor = mWidth / 25;
         cardAdapter.setMaxElevationFactor(maxFactor);
 
-        int mWidthPading = mWidth / 8;
+
 
         //因为我们adapter里的cardView CornerRadius已经写死为10dp，所以0.3*CornerRadius=3
         //设置Elevation之后，控件宽度要减去 (maxFactor + dp2px(3)) * heightRatio
         //heightMore 设置Elevation之后，控件高度 比  控件宽度* heightRatio  多出的部分
+        int mWidthPading = mWidth / 8;
         float heightMore = (1.5f * maxFactor + dp2px(3)) - (maxFactor + dp2px(3)) * heightRatio;
         int mHeightPading = (int) (mWidthPading * heightRatio - heightMore);
 
+        //获取滚动viewpager
         final BezierViewPager viewPager = layout.findViewById(R.id.mainActivity_viewPage);
+
+        //初始化viewpager
         viewPager.setLayoutParams(new RelativeLayout.LayoutParams(mWidth, (int) (mWidth * heightRatio)));
         viewPager.setPadding(mWidthPading, mHeightPading, mWidthPading, mHeightPading);
         viewPager.setClipToPadding(false);
         viewPager.setAdapter(cardAdapter);
         viewPager.showTransformer(0.2f);
 
-
+        //初始化viewpager顶部的滑动圆点
         BezierRoundView bezRound = layout.findViewById(R.id.mainActivity_viewPageBezRound);
         bezRound.attach2ViewPage(viewPager);
 
+        //设置当前页面
         viewPager.setCurrentItem(0);
 
-        //执行无限循环任务
+        //执行无限循环任务（不断自己滑动图片）
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
@@ -157,8 +186,13 @@ public class MainFragment extends Fragment {
                     public void run() {
                         int currentItem = viewPager.getCurrentItem();
                         if (currentItem == imgList.size() - 1) {
+
+                            //已经到达最后一张
                             viewPager.setCurrentItem(0);
+
                         } else {
+
+                            //滚动至下一张
                             viewPager.setCurrentItem(currentItem + 1);
                         }
                     }
@@ -166,6 +200,8 @@ public class MainFragment extends Fragment {
 
             }
         };
+
+        //开始执行
         timer.schedule(task, Constant.DELAY_TIME, Constant.DELAY_TIME);
     }
 

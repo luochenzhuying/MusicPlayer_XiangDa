@@ -49,6 +49,7 @@
         app:fb_textSize="10sp" />
 
     <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/item_activity_main_recentPlayButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
