@@ -43,7 +43,11 @@ public class MainFragment extends Fragment {
     int index = 0;
 
 
-
+    /**
+     * 定时任务器
+     * 作为全局的作用：进入下个页面的时候将其停止，
+     * 防止发生空指针异常
+     */
     Timer textTimer = null;
 
     @Nullable
@@ -122,8 +126,8 @@ public class MainFragment extends Fragment {
     }
 
     /**
-     *  初始化ViewPage（动态滚动栏）
-     *  使用的是网络图片链接
+     * 初始化ViewPage（动态滚动栏）
+     * 使用的是网络图片链接
      */
     private void InitViewPage() {
         ImageLoadFactory.getInstance().setImageClient(new GlideImageClient());
@@ -148,7 +152,6 @@ public class MainFragment extends Fragment {
         float heightRatio = 0.565f;  //高是宽的 0.565 ,根据图片比例
         int maxFactor = mWidth / 25;
         cardAdapter.setMaxElevationFactor(maxFactor);
-
 
 
         //因为我们adapter里的cardView CornerRadius已经写死为10dp，所以0.3*CornerRadius=3
