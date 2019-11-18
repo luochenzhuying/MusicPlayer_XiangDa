@@ -61,7 +61,6 @@ public class SearchMusicActivity extends AppCompatActivity {
     };
 
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +82,7 @@ public class SearchMusicActivity extends AppCompatActivity {
 
     /**
      * 左上返回按钮
+     *
      * @param view
      */
     public void back(View view) {
@@ -95,6 +95,7 @@ public class SearchMusicActivity extends AppCompatActivity {
 
     /**
      * 搜索按钮(图片)
+     *
      * @param view
      */
     public void search(View view) {
@@ -124,12 +125,14 @@ public class SearchMusicActivity extends AppCompatActivity {
                         if (file2.isDirectory()) {
                             list.add(file2);
                         } else {
-                            String n =file2.getName().toLowerCase();
+                            String n = file2.getName().toLowerCase();
                             //判断是否为音乐文件
-                            if (n.endsWith(".mp3")||n.endsWith(".mpeg")||n.endsWith(".wma")||n.endsWith(".midi")||n.endsWith(".mpeg-4")) {
-//                                if (file2.length() / ( 1024 * 1024) >= 1) {
-                                //将其加入音乐列表
-                                musicsList.add(file2);
+                            if (n.endsWith(".mp3") || n.endsWith(".mpeg") || n.endsWith(".wma") || n.endsWith(".midi") || n.endsWith(".mpeg-4")) {
+
+                                //剔除小于1MB的文件
+                                if (file2.length() / (1024 * 1024) >= 1) {
+                                    //将其加入音乐列表
+                                    musicsList.add(file2);
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
@@ -137,7 +140,7 @@ public class SearchMusicActivity extends AppCompatActivity {
                                             tv.setText(file2.getName());
                                         }
                                     });
-//                                }
+                                }
 
 
                             }
@@ -153,9 +156,11 @@ public class SearchMusicActivity extends AppCompatActivity {
                             if (file2.isDirectory()) {
                                 list.add(file2);
                             } else {
-                                String n =file2.getName().toLowerCase();
-                                if (n.endsWith(".mp3")||n.endsWith(".mpeg")||n.endsWith(".wma")||n.endsWith(".midi")||n.endsWith(".mpeg-4")) {
-//                                    if (file2.length() / ( 1024 * 1024) >= 1) {
+                                String n = file2.getName().toLowerCase();
+                                if (n.endsWith(".mp3") || n.endsWith(".mpeg") || n.endsWith(".wma") || n.endsWith(".midi") || n.endsWith(".mpeg-4")) {
+
+                                    //剔除小于1MB的文件
+                                    if (file2.length() / (1024 * 1024) >= 1) {
                                         musicsList.add(file2);
 
                                         runOnUiThread(new Runnable() {
@@ -164,7 +169,7 @@ public class SearchMusicActivity extends AppCompatActivity {
                                                 tv.setText(file2.getName());
                                             }
                                         });
-//                                    }
+                                    }
                                 }
                             }
                         }
