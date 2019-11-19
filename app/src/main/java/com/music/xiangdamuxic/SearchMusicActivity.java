@@ -127,7 +127,8 @@ public class SearchMusicActivity extends AppCompatActivity {
                         } else {
                             String n = file2.getName().toLowerCase();
                             //判断是否为音乐文件
-                            if (n.endsWith(".mp3") || n.endsWith(".mpeg") || n.endsWith(".wma") || n.endsWith(".midi") || n.endsWith(".mpeg-4")) {
+                            if (n.endsWith(".mp3") || n.endsWith(".mpeg") || n.endsWith(".wma")
+                                    || n.endsWith(".midi") || n.endsWith(".mpeg-4")|| n.endsWith(".flac")) {
 
                                 //剔除小于1MB的文件
                                 if (file2.length() / (1024 * 1024) >= 1) {
@@ -157,7 +158,8 @@ public class SearchMusicActivity extends AppCompatActivity {
                                 list.add(file2);
                             } else {
                                 String n = file2.getName().toLowerCase();
-                                if (n.endsWith(".mp3") || n.endsWith(".mpeg") || n.endsWith(".wma") || n.endsWith(".midi") || n.endsWith(".mpeg-4")) {
+                                if (n.endsWith(".mp3") || n.endsWith(".mpeg") || n.endsWith(".wma")
+                                        || n.endsWith(".midi") || n.endsWith(".mpeg-4")|| n.endsWith(".flac")) {
 
                                     //剔除小于1MB的文件
                                     if (file2.length() / (1024 * 1024) >= 1) {

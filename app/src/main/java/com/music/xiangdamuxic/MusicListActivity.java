@@ -152,7 +152,7 @@ public class MusicListActivity extends AppCompatActivity {
         //开启搜索页面
         Intent intent = new Intent(this, SearchMusicActivity.class);
         startActivity(intent);
-        finish();
+        this.finish();
         overridePendingTransition(R.anim.next_in, R.anim.next_out);
 
     }
