@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MusicPlayer_XiangDa.iml" filepath="$PROJECT_DIR$/MusicPlayer_XiangDa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lyricview/MusicPlayer_XiangDa-lyricview.iml" filepath="$PROJECT_DIR$/lyricview/MusicPlayer_XiangDa-lyricview.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/lyricview/lyricview.iml" filepath="$PROJECT_DIR$/lyricview/lyricview.iml" />
       <module fileurl="file://$PROJECT_DIR$/verticaladvertisementlibrary/verticaladvertisementlibrary.iml" filepath="$PROJECT_DIR$/verticaladvertisementlibrary/verticaladvertisementlibrary.iml" />

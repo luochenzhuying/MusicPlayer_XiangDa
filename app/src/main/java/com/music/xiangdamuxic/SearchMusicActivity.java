@@ -1,12 +1,17 @@
 package com.music.xiangdamuxic;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,7 +24,9 @@ import com.music.xiangdamuxic.utils.Utils;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class SearchMusicActivity extends AppCompatActivity {
 
@@ -76,6 +83,31 @@ public class SearchMusicActivity extends AppCompatActivity {
 
         //搜索文字显示
         tv = findViewById(R.id.searchMusicActivity_textView);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            // 检查该权限是否已经获取
+            // 权限是否已经 授权 GRANTED---授权  DINIED---拒绝
+            List<String> permissionList = new ArrayList<>();
+            if (ContextCompat.checkSelfPermission(this, Manifest.
+                    permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                permissionList.add(Manifest.permission.ACCESS_FINE_LOCATION);
+            }
+            if (ContextCompat.checkSelfPermission(this, Manifest.
+                    permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                permissionList.add(Manifest.permission.READ_PHONE_STATE);
+            }
+            if (ContextCompat.checkSelfPermission(this, Manifest.
+                    permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            }
+            if (!permissionList.isEmpty()) {
+                String[] permissions = permissionList.toArray(new String[permissionList.size()]);
+                ActivityCompat.requestPermissions(this, permissions, 1);
+            } else {
+
+            }
+        }
+
 
     }
 
