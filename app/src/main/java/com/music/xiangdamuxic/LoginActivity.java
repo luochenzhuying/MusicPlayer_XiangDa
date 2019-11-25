@@ -112,8 +112,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     toast.show();//显示消息
                 } else {
 
-                    if (Utils.getString(this, Constant.userNameSPKey, "").equals(mEtMobile.getText())
-                            && Utils.getString(this, Constant.userPasswordSPKey, "").equals(mEtPassword.getText())) {
+                    if (Utils.getString(LoginActivity.this, Constant.userNameSPKey, "").equals(mEtMobile.getText())
+                            && Utils.getString(LoginActivity.this, Constant.userPasswordSPKey, "").equals(mEtPassword.getText())) {
 
                         CircularAnim.hide(login)
                                 .endRadius(mProgressBar.getHeight() / 2)
