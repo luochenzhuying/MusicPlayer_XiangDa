@@ -43,6 +43,9 @@ public class Constant {
     //备忘录
     public static String MEMORANDUM = "MEMORANDUM";
 
+    //SP中的用户名KEY
+    public static String userNameSPKey="USERNAMESPKEY";
 
-
+    //SP中的用户的密码KEY
+    public static String userPasswordSPKey="USERPASSWORDSPKEY";
 }

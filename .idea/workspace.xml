@@ -15,9 +15,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43485b91-16d1-4e9a-a109-d8678bfb452b" name="Default" comment="入口改为Welcome.java">
+    <list default="true" id="43485b91-16d1-4e9a-a109-d8678bfb452b" name="Default" comment="LoginActivity增加本地SP用户名与密码验证代码">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/utils/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/utils/Constant.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,17 +52,26 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/LoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
+            <state relative-caret-position="330">
+              <caret line="115" column="69" selection-start-line="115" selection-start-column="69" selection-end-line="115" selection-end-column="69" />
               <folding>
                 <element signature="e#3105#6039#0" expanded="true" />
                 <element signature="e#4182#6028#0" expanded="true" />
                 <element signature="e#6027#6028#0" expanded="true" />
                 <element signature="e#6038#6039#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/utils/Constant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="576">
+              <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -101,7 +110,6 @@
       <list>
         <option value="$PROJECT_DIR$/lyricview/build.gradle" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/utils/Constant.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/WelcomePage.java" />
@@ -116,6 +124,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/ui/Friend/SortModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/utils/Constant.java" />
       </list>
     </option>
   </component>
@@ -430,7 +439,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574652880116</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="LoginActivity增加本地SP用户名与密码验证代码">
+      <created>1574653372238</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1574653372238</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -478,7 +494,8 @@
     <MESSAGE value="创建新LoginActivity" />
     <MESSAGE value="完成LoginActivity的xml内容" />
     <MESSAGE value="入口改为Welcome.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="入口改为Welcome.java" />
+    <MESSAGE value="LoginActivity增加本地SP用户名与密码验证代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="LoginActivity增加本地SP用户名与密码验证代码" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/lyricview/src/main/AndroidManifest.xml">
@@ -601,13 +618,6 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/zxy1.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/utils/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/PlayerService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -719,14 +729,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
+        <state relative-caret-position="330">
+          <caret line="115" column="69" selection-start-line="115" selection-start-column="69" selection-end-line="115" selection-end-column="69" />
           <folding>
             <element signature="e#3105#6039#0" expanded="true" />
             <element signature="e#4182#6028#0" expanded="true" />
             <element signature="e#6027#6028#0" expanded="true" />
             <element signature="e#6038#6039#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/utils/Constant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
         </state>
       </provider>
     </entry>
