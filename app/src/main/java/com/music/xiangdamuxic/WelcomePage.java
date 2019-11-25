@@ -21,6 +21,7 @@ public class WelcomePage extends AppCompatActivity {
      * 记录问候语播放的位置
      */
     int index = 0;
+    private Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +82,9 @@ public class WelcomePage extends AppCompatActivity {
                         intent = new Intent(WelcomePage.this, MainActivity.class);
                     }
 
+                    //取消动态字体任务
+                    timer.cancel();
+
                     //开启意图
                     startActivity(intent);
 
@@ -115,7 +119,7 @@ public class WelcomePage extends AppCompatActivity {
         };
 
         //开启任务，1.5S更换
-        Timer timer = new Timer();
+        timer = new Timer();
         timer.schedule(timerTask, 0, 1500);
     }
 
