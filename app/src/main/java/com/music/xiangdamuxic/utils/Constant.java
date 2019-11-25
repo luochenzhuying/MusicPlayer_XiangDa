@@ -51,4 +51,7 @@ public class Constant {
 
     //SP中的用户的邮箱KEY
     public static String userEmail="USEREMAIL";
+
+    //SP中的是否已经登录的KEY
+    public static String isLogOn="ISLOGON";
 }
