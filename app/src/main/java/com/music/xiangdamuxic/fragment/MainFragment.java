@@ -49,6 +49,7 @@ public class MainFragment extends Fragment {
      * 防止发生空指针异常
      */
     Timer textTimer = null;
+    private Timer timer;
 
     @Nullable
     @Override
@@ -179,7 +180,7 @@ public class MainFragment extends Fragment {
         viewPager.setCurrentItem(0);
 
         //执行无限循环任务（不断自己滑动图片）
-        Timer timer = new Timer();
+        timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
@@ -212,6 +213,9 @@ public class MainFragment extends Fragment {
      * 初始化动态字体
      */
     private void initDynamicText() {
+
+
+
         //设置变化字体
         final EvaporateTextView cvaporateTextView = layout.findViewById(R.id.mainActivity_evaporateTextView);
         TimerTask textTimerTask = new TimerTask() {
