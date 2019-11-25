@@ -18,8 +18,10 @@ import android.widget.Toast;
 
 import com.jaeger.library.StatusBarUtil;
 import com.music.xiangdamuxic.ui.CircularAnim;
+import com.music.xiangdamuxic.utils.Constant;
+import com.music.xiangdamuxic.utils.Utils;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     /**
      * 密码输入框
      */
@@ -109,32 +111,37 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     toast.show();//显示消息
                 } else {
-                    CircularAnim.hide(login)
-                            .endRadius(mProgressBar.getHeight() / 2)
-                            .go(new CircularAnim.OnAnimationEndListener() {
-                                @Override
-                                public void onAnimationEnd() {
-                                    mProgressBar.setVisibility(View.VISIBLE);
-                                    mProgressBar.postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            CircularAnim.fullActivity(LoginActivity.this, mProgressBar)
-                                                    .colorOrImageRes(R.color.theme)
-                                                    .go(new CircularAnim.OnAnimationEndListener() {
-                                                        @Override
-                                                        public void onAnimationEnd() {
-                                                            Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_LONG).show();
-                                                            Intent intent = new Intent();
-                                                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                                            intent.setClass(LoginActivity.this, MainActivity.class);
-                                                            startActivity(intent);
-                                                            finish();
-                                                        }
-                                                    });
-                                        }
-                                    }, 3000);
-                                }
-                            });
+
+                    if (Utils.getString(this, Constant.userNameSPKey, "").equals(mEtMobile.getText())
+                            && Utils.getString(this, Constant.userPasswordSPKey, "").equals(mEtPassword.getText())) {
+
+                        CircularAnim.hide(login)
+                                .endRadius(mProgressBar.getHeight() / 2)
+                                .go(new CircularAnim.OnAnimationEndListener() {
+                                    @Override
+                                    public void onAnimationEnd() {
+                                        mProgressBar.setVisibility(View.VISIBLE);
+                                        mProgressBar.postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                CircularAnim.fullActivity(LoginActivity.this, mProgressBar)
+                                                        .colorOrImageRes(R.color.theme)
+                                                        .go(new CircularAnim.OnAnimationEndListener() {
+                                                            @Override
+                                                            public void onAnimationEnd() {
+                                                                Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_LONG).show();
+                                                                Intent intent = new Intent();
+                                                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                                intent.setClass(LoginActivity.this, MainActivity.class);
+                                                                startActivity(intent);
+                                                                finish();
+                                                            }
+                                                        });
+                                            }
+                                        }, 3000);
+                                    }
+                                });
+                    }
                 }
             }
         });
