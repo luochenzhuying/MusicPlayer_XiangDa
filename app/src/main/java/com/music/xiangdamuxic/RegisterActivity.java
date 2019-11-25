@@ -128,8 +128,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     setResult(RESULT_OK, intent);
 
                     RegisterActivity.this.finish();
-
-
                 }
             }
         });

@@ -8,6 +8,7 @@ import android.view.animation.AlphaAnimation;
 import com.hanks.htextview.scale.ScaleTextView;
 import com.jaeger.library.StatusBarUtil;
 import com.music.xiangdamuxic.utils.Constant;
+import com.music.xiangdamuxic.utils.Utils;
 
 import java.util.Date;
 import java.util.Timer;
@@ -67,8 +68,18 @@ public class WelcomePage extends AppCompatActivity {
                     //子线程休眠未满5s的时间
                     Thread.sleep((5000) - (endTime - startTime));
 
-                    //MainActivity  意图初始
-                    Intent intent = new Intent(WelcomePage.this, MainActivity.class);
+                    //意图初始
+                    Intent intent =null;
+
+                    //判断是否已经登录，如果已经登录，则跳转主页
+                    //否则跳转登录界面
+                    if(Utils.getBool(WelcomePage.this,Constant.isLogOn,false)){
+                        //未登录
+                        intent = new Intent(WelcomePage.this, LoginActivity.class);
+                    }else{
+                        //已登录
+                        intent = new Intent(WelcomePage.this, MainActivity.class);
+                    }
 
                     //开启意图
                     startActivity(intent);
