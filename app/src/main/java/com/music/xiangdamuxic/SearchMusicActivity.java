@@ -147,6 +147,7 @@ public class SearchMusicActivity extends AppCompatActivity {
 
                 //内部存储根目录
                 File file = new File("/storage/emulated/0");
+//                File file = new File("/");
 
                 //遍历根目录(非迭代)
                 //先遍历首目录

@@ -74,7 +74,7 @@ public class WelcomePage extends AppCompatActivity {
 
                     //判断是否已经登录，如果已经登录，则跳转主页
                     //否则跳转登录界面
-                    if(Utils.getBool(WelcomePage.this,Constant.isLogOn,false)){
+                    if(!Utils.getBool(WelcomePage.this,Constant.isLogOn,false)){
                         //未登录
                         intent = new Intent(WelcomePage.this, LoginActivity.class);
                     }else{

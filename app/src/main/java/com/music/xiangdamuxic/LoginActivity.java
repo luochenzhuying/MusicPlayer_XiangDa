@@ -112,7 +112,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
      */
     private void initLoginButton() {
         //获取
-        final ProgressBar mProgressBar = findViewById(R.id.progressBar2);
+        final ProgressBar mProgressBar = findViewById(R.id.progressBar22);
         final Button login = findViewById(R.id.btn_login);
 
         //设置点击（mProgressBar和button配合）
@@ -131,15 +131,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     toast.show();//显示消息
                 } else {
 
-                    if (Utils.getString(LoginActivity.this, Constant.userNameSPKey, "").equals(mEtMobile.getText())
-                            && Utils.getString(LoginActivity.this, Constant.userPasswordSPKey, "").equals(mEtPassword.getText())) {
+                    if (Utils.getString(LoginActivity.this, Constant.userNameSPKey, "").equals(mEtMobile.getText().toString())
+                            && Utils.getString(LoginActivity.this, Constant.userPasswordSPKey, "").equals(mEtPassword.getText().toString())) {
 
                         CircularAnim.hide(login)
                                 .endRadius(mProgressBar.getHeight() / 2)
                                 .go(new CircularAnim.OnAnimationEndListener() {
                                     @Override
                                     public void onAnimationEnd() {
+                                        login.setVisibility(View.GONE);
                                         mProgressBar.setVisibility(View.VISIBLE);
+
                                         mProgressBar.postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
