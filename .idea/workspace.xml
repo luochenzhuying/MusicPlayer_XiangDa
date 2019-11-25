@@ -15,7 +15,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43485b91-16d1-4e9a-a109-d8678bfb452b" name="Default" comment="完成RegisterActivity以及xml的编写">
+    <list default="true" id="43485b91-16d1-4e9a-a109-d8678bfb452b" name="Default" comment="编写LogActivity.java的onActivityResult，实现注册完将用户名填入输入框">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/LoginActivity.java" afterDir="false" />
     </list>
@@ -55,8 +55,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/LoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="76" column="17" lean-forward="true" selection-start-line="76" selection-start-column="17" selection-end-line="76" selection-end-column="17" />
+            <state relative-caret-position="457">
+              <caret line="154" lean-forward="true" selection-start-line="154" selection-end-line="154" />
               <folding>
                 <element signature="e#3734#6749#0" expanded="true" />
                 <element signature="e#4837#6683#0" expanded="true" />
@@ -530,7 +530,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574656367146</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="编写LogActivity.java的onActivityResult，实现注册完将用户名填入输入框">
+      <created>1574656832977</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1574656832977</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -595,7 +602,8 @@
     <MESSAGE value="增加RegisterActivity以及xml" />
     <MESSAGE value="完成RegisterActivity以及xml的编写" />
     <MESSAGE value="Constant新增常量-SP中的用户的邮箱KEY" />
-    <option name="LAST_COMMIT_MESSAGE" value="Constant新增常量-SP中的用户的邮箱KEY" />
+    <MESSAGE value="编写LogActivity.java的onActivityResult，实现注册完将用户名填入输入框" />
+    <option name="LAST_COMMIT_MESSAGE" value="编写LogActivity.java的onActivityResult，实现注册完将用户名填入输入框" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/lyricview/src/main/AndroidManifest.xml">
@@ -862,8 +870,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/music/xiangdamuxic/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="76" column="17" lean-forward="true" selection-start-line="76" selection-start-column="17" selection-end-line="76" selection-end-column="17" />
+        <state relative-caret-position="457">
+          <caret line="154" lean-forward="true" selection-start-line="154" selection-end-line="154" />
           <folding>
             <element signature="e#3734#6749#0" expanded="true" />
             <element signature="e#4837#6683#0" expanded="true" />

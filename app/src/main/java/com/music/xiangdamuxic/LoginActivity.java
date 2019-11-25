@@ -149,6 +149,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                                             @Override
                                                             public void onAnimationEnd() {
                                                                 Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_LONG).show();
+
+                                                                //登录成功将已经登录的标志存入SP中，下次进入直接进主页，无需登录
+                                                                Utils.putBool(LoginActivity.this,Constant.isLogOn,true);
+
                                                                 Intent intent = new Intent();
                                                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                                                 intent.setClass(LoginActivity.this, MainActivity.class);
