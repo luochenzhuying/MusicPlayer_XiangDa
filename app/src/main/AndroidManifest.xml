@@ -38,7 +38,6 @@
             android:launchMode="singleTask" />
         <activity android:name=".MusicListActivity" />
         <activity android:name=".SearchMusicActivity" />
-        <activity android:name=".RegisterActivity"/>
 
         <service android:name=".PlayerService" />
     </application>
