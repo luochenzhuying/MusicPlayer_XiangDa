@@ -33,6 +33,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
      */
     private EditText mEtMobile;
 
+    private static final int REQUEST_CODE_GO_TO_REGIST = 100;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +60,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         //初始化登录按钮
         initLoginButton();
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case REQUEST_CODE_GO_TO_REGIST:
+                //判断注册是否成功  如果注册成功
+                if (resultCode == RESULT_OK) {
+                    //则获取data中的账号和密码  动态设置到EditText中
+                    String username = data.getStringExtra("user_name");
+                    mEtMobile.setText(username);
+                }
+                break;
+        }
 
     }
 
@@ -147,13 +166,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         });
 
         //注册
-//        findViewById(R.id.regist).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(WelcomeActivity.this, Register.class);
-//                startActivityForResult(intent, REQUEST_CODE_GO_TO_REGIST);
-//            }
-//        });
+        findViewById(R.id.regist).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivityForResult(intent, REQUEST_CODE_GO_TO_REGIST);
+            }
+        });
     }
 
     /**
