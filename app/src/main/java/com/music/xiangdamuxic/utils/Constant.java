@@ -48,4 +48,7 @@ public class Constant {
 
     //SP中的用户的密码KEY
     public static String userPasswordSPKey="USERPASSWORDSPKEY";
+
+    //SP中的用户的邮箱KEY
+    public static String userEmail="USEREMAIL";
 }
