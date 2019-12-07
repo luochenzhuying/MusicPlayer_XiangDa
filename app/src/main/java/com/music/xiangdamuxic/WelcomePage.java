@@ -15,7 +15,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class WelcomePage extends AppCompatActivity {
+public class WelcomePage extends SuperActivity {
 
     /**
      * 记录问候语播放的位置

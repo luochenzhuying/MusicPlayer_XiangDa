@@ -25,7 +25,7 @@ import com.music.xiangdamuxic.utils.Utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
+public class RegisterActivity extends SuperActivity implements View.OnClickListener {
 
     private EditText mEtPassword;
     private EditText mEtPassword1;

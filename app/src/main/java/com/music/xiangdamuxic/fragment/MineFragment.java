@@ -25,6 +25,7 @@ import com.suke.widget.SwitchButton;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.regex.Pattern;
 
 
 public class MineFragment extends Fragment {
@@ -112,33 +113,40 @@ public class MineFragment extends Fragment {
                             EditText etv = dialogView.findViewById(R.id.etv);
 //                            final int text = Integer.valueOf(String.valueOf(etv.getText()));
                             String s = etv.getText().toString();
-                            final int text = Integer.valueOf(s);
-                            Utils.putInt(activity, Constant.TIMINGNUM, text);
+                            if (isNumeric(s)) {
 
-                            Toast.makeText(activity, "已成功开启定时--" + text + "分钟", Toast.LENGTH_SHORT).show();
 
-                            new Thread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    final int max = text * 60;
+                                final int text = Integer.valueOf(s);
+                                Utils.putInt(activity, Constant.TIMINGNUM, text);
+
+                                Toast.makeText(activity, "已成功开启定时--" + text + "分钟", Toast.LENGTH_SHORT).show();
+
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        final int max = text * 60;
 //                                    final int max=text;
-                                    timer = new Timer();
-                                    TimerTask timerTask = new TimerTask() {
-                                        @Override
-                                        public void run() {
-                                            Message msg = Message.obtain();
-                                            Bundle b = new Bundle();
-                                            b.putInt("max", max);
-                                            msg.setData(b);
-                                            handler.sendMessage(msg);
-                                        }
-                                    };
+                                        timer = new Timer();
+                                        TimerTask timerTask = new TimerTask() {
+                                            @Override
+                                            public void run() {
+                                                Message msg = Message.obtain();
+                                                Bundle b = new Bundle();
+                                                b.putInt("max", max);
+                                                msg.setData(b);
+                                                handler.sendMessage(msg);
+                                            }
+                                        };
 
-                                    timer.schedule(timerTask, 0, 1000);
-                                }
-                            }).start();
+                                        timer.schedule(timerTask, 0, 1000);
+                                    }
+                                }).start();
 
-                            mDialog.dismiss();
+                                mDialog.dismiss();
+                            }else{
+                                Toast.makeText(activity, "请输入整数，至少为0分钟~", Toast.LENGTH_SHORT).show();
+
+                            }
                         }
                     });
 
@@ -173,6 +181,14 @@ public class MineFragment extends Fragment {
                 Toast.makeText(activity, "保存成功", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public static boolean isNumeric(String str) {
+
+        Pattern pattern = Pattern.compile("[0-9]*");
+
+        return pattern.matcher(str).matches();
+
     }
 
 

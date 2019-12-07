@@ -13,6 +13,7 @@ import com.music.xiangdamuxic.fragment.MessageFragment;
 import com.music.xiangdamuxic.fragment.MineFragment;
 import com.music.xiangdamuxic.utils.ActivityManager;
 import com.music.xiangdamuxic.utils.Constant;
+import com.music.xiangdamuxic.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.List;
 import eu.long1.spacetablayout.SpaceTabLayout;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends SuperActivity {
     /**
      * 记录当前返回键按下的时间撮
      * 默认为0，保证第一次按下后能对当前时间进行记录
@@ -56,6 +57,13 @@ public class MainActivity extends AppCompatActivity {
         //初始化底部TabLayout
         mBottomTabLayout.initialize(viewPager, getSupportFragmentManager(),
                 fragmentList, savedInstanceState);
+
+
+        //获取用户名
+        String show_name = Utils.getString(MainActivity.this, Constant.userNameSPKey, "")+" 欢迎你！";
+
+        //欢迎语句
+        Toast.makeText(MainActivity.this,show_name,Toast.LENGTH_LONG).show();
     }
 
 

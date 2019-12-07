@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,21 @@ public class MainFragment extends Fragment {
      */
     Timer textTimer = null;
     private Timer timer;
+    private EvaporateTextView mCvaporateTextView = null;
+    private TimerTask textTimerTask;
+
+    @Override
+    public void onStop() {
+        if (textTimer != null)
+            textTimer.cancel();
+        super.onStop();
+    }
+
+    @Override
+    public void onStart() {
+        initDynamicText();
+        super.onStart();
+    }
 
     @Nullable
     @Override
@@ -214,20 +230,30 @@ public class MainFragment extends Fragment {
      */
     private void initDynamicText() {
 
+        if (mCvaporateTextView == null) {
+            //设置变化字体
+            mCvaporateTextView = layout.findViewById(R.id.mainActivity_evaporateTextView);
+        }
+
+        if(textTimer==null){
+            textTimer = new Timer();
+        }
+
+        if (textTimerTask == null) {
+            textTimerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    mCvaporateTextView.animateText(Constant.GREETINGSENTENCES[(index++) % Constant.GREETINGSENTENCES.length]);
+                }
+            };
+            //开启任务，3S更换
+            textTimer.schedule(textTimerTask, 0, Constant.DELAY_TIME);
+        }
 
 
-        //设置变化字体
-        final EvaporateTextView cvaporateTextView = layout.findViewById(R.id.mainActivity_evaporateTextView);
-        TimerTask textTimerTask = new TimerTask() {
-            @Override
-            public void run() {
-                cvaporateTextView.animateText(Constant.GREETINGSENTENCES[(index++) % Constant.GREETINGSENTENCES.length]);
-            }
-        };
 
-        //开启任务，3S更换
-        textTimer = new Timer();
-        textTimer.schedule(textTimerTask, 0, Constant.DELAY_TIME);
+
+
     }
 
     /**

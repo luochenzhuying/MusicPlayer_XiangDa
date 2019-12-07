@@ -47,7 +47,8 @@ public class PlayerService extends Service {
         //暂停
         public void pause() {
             PlayerService.this.pause();
-            timer.cancel();
+            if (timer != null)
+                timer.cancel();
         }
 
         //更新
@@ -148,6 +149,7 @@ public class PlayerService extends Service {
 
                 Message msg = Message.obtain();
                 msg.what = 0;
+
                 Bundle bundle = new Bundle();
                 bundle.putInt("duration", duration);
                 bundle.putInt("currentPosition", currentPosition);

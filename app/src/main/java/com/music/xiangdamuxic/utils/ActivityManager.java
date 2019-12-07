@@ -37,7 +37,7 @@ public class ActivityManager extends Application {
         //从后面往前面Kill
         for (int i = activityList.size() - 1; i >= 0; i--) {
             Activity activity = activityList.get(i);
-            if (!activity.isFinishing()) {
+            if (activity!=null && !activity.isFinishing()) {
                 activity.finish();
             }
         }

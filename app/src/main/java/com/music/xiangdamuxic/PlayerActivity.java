@@ -35,7 +35,7 @@ import java.util.List;
 
 import me.zhengken.lyricview.LyricView;
 
-public class PlayerActivity extends AppCompatActivity implements View.OnClickListener {
+public class PlayerActivity extends SuperActivity implements View.OnClickListener {
 
     private ServiceConnection conn;
     private static PlayerService.MyBinder mb; //中间人

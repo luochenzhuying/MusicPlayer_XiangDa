@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class SearchMusicActivity extends AppCompatActivity {
+public class SearchMusicActivity extends SuperActivity {
 
     //搜索图标
     private ImageView imageViewSearch;

@@ -21,7 +21,7 @@ import com.music.xiangdamuxic.ui.CircularAnim;
 import com.music.xiangdamuxic.utils.Constant;
 import com.music.xiangdamuxic.utils.Utils;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends SuperActivity implements View.OnClickListener {
     /**
      * 密码输入框
      */

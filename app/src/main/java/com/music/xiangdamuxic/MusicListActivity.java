@@ -25,7 +25,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class MusicListActivity extends AppCompatActivity {
+public class MusicListActivity extends SuperActivity {
 
     private ListView musicListView;
     BaseAdapter adapter = null;
