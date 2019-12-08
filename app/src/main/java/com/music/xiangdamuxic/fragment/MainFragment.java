@@ -246,7 +246,7 @@ public class MainFragment extends Fragment {
                     mCvaporateTextView.animateText(Constant.GREETINGSENTENCES[(index++) % Constant.GREETINGSENTENCES.length]);
                 }
             };
-            //开启任务，3S更换
+            //开启任务，2.5S更换
             textTimer.schedule(textTimerTask, 0, Constant.DELAY_TIME);
         }
 

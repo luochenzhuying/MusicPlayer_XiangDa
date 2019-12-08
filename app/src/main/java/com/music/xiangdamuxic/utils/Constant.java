@@ -16,7 +16,8 @@ public class Constant {
     public static int DELAY_TIME = 2500;
 
     //动态标语
-    public static String[] GREETINGSENTENCES = {"Wclcome To XiangDaMusic",
+    public static String[] GREETINGSENTENCES = {
+            "Wclcome To XiangDaMusic",
             "The new day",
             "Do you feel well?",
             "Speed up! Come on!",
