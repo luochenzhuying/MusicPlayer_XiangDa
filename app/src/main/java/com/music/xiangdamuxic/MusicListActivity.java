@@ -108,11 +108,14 @@ public class MusicListActivity extends SuperActivity {
         if (list != null) {
             if (list.size() == 0) {
                 //空
+                Toast.makeText(this, "未添加歌曲，点击右上方的搜索按钮可以进行搜索哦~", Toast.LENGTH_LONG).show();
             } else {
                 //设置适配器
                 adapter = new MyAdapter();
                 musicListView.setAdapter(adapter);
             }
+        }else{
+            Toast.makeText(this, "未添加歌曲，点击右上方的搜索按钮可以进行搜索哦~", Toast.LENGTH_LONG).show();
         }
         musicListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -136,6 +139,7 @@ public class MusicListActivity extends SuperActivity {
 
     /**
      * 左上角的返回按钮
+     *
      * @param view
      */
     public void back(View view) {
@@ -146,6 +150,7 @@ public class MusicListActivity extends SuperActivity {
 
     /**
      * 右上角搜索音乐按钮
+     *
      * @param view
      */
     public void SearchMusic(View view) {

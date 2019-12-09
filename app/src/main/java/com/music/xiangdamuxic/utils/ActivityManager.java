@@ -11,18 +11,24 @@ public class ActivityManager extends Application {
     //建立链表集合
     private static List<Activity> activityList = new LinkedList<Activity>();
 
+    //实例
     private static ActivityManager instance;
 
+    //私有化构造方法
     private ActivityManager() {
-
     }
 
+    /**
+     * 获取唯一实例
+     * @return ActivityManager 实例
+     */
     public static ActivityManager getInstance() {
         if (instance == null) {
             instance = new ActivityManager();
         }
         return instance;
     }
+
 
     public void addActivity(Activity activity) {
         activityList.add(activity);

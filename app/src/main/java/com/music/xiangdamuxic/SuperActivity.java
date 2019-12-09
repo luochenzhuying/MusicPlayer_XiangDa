@@ -9,13 +9,9 @@ public class SuperActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //统一添加入ActivityManager进行管理
         ActivityManager.getInstance().addActivity(this);
-    }
 
-
-    @Override
-    protected void onDestroy() {
-//        ActivityManager.getInstance().addActivity(this);
-        super.onDestroy();
     }
 }

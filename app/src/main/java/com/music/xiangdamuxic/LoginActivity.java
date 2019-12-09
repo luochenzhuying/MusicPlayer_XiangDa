@@ -166,6 +166,11 @@ public class LoginActivity extends SuperActivity implements View.OnClickListener
                                         }, 3000);
                                     }
                                 });
+                    }else{
+                        Toast toast = Toast.makeText(getApplicationContext(), "账户不存在或密码错误~，请重试或尝试注册~", Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 1080);//设置提示框显示的位置
+
+                        toast.show();//显示消息
                     }
                 }
             }
